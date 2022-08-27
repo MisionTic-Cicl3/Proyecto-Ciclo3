@@ -1,10 +1,22 @@
-package com.proyecto.mintic.empleado;
+package com.proyecto.mintic.entity;
 
 public class ProyectoEmpleado {
-    public String nombre;
-    public String correo;
-    public String empresa;
-    public String rol;
+    private String nombre;
+    private String correo;
+    private String empresa;
+    private String rol;
+
+    public ProyectoEmpleado() {
+
+    }
+
+    public ProyectoEmpleado(String nombre, String correo, String empresa, String rol) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.empresa = empresa;
+        this.rol = rol;
+    }
+    // Getter y setter
 
     public String getNombre() {
         return nombre;

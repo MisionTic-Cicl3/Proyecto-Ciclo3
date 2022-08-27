@@ -1,6 +1,7 @@
 package com.proyecto.mintic;
 
-import com.proyecto.mintic.empleado.ProyectoEmpleado;
+import com.proyecto.mintic.entity.Empresa;
+import com.proyecto.mintic.entity.ProyectoEmpleado;
 import com.proyecto.mintic.entity.MovimientoDineroEntity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,26 +13,35 @@ public class ProyectoMinticApplication {
         SpringApplication.run(ProyectoMinticApplication.class, args);
 
         MovimientoDineroEntity movimientoDinero = new MovimientoDineroEntity(); //instancia de movimiento de dinero
-        movimientoDinero.monto = 10000;
-        movimientoDinero.concepto = "prueba1";
-        movimientoDinero.usuario = "usuario1";
+        movimientoDinero.setMonto(10000);
+        movimientoDinero.setConcepto("prueba1");
+        movimientoDinero.setUsuario("usuario1");
 
+        System.out.println("dinero: "+ movimientoDinero.getMonto());
+        System.out.println("concepto: "+ movimientoDinero.getConcepto());
+        System.out.println("usuario: "+ movimientoDinero.getUsuario());
 
-       System.out.println("dinero: "+ movimientoDinero.monto);
-        System.out.println("concepto: "+ movimientoDinero.concepto);
-        System.out.println("usuario: "+ movimientoDinero.usuario);
+        Empresa Empresa1 = new Empresa();
+        Empresa1.setNombreEmpresa("Big Data Company");
+        Empresa1.setDireccionEmpresa("Av 28 N 21 83");
+        Empresa1.setNitEmpresa("890319193");
+        Empresa1.setTelefonoEmpresa("8888650");
 
+        System.out.println("Nombre empresa es: "+ Empresa1.getNombreEmpresa());
+        System.out.println("Direccion empresa es: "+ Empresa1.getDireccionEmpresa());
+        System.out.println("Nit empresa es: "+ Empresa1.getNitEmpresa());
+        System.out.println("Telefono empresa es: "+ Empresa1.getTelefonoEmpresa());
 
         ProyectoEmpleado proyectoEmpleado = new ProyectoEmpleado(); //instancia de empleado
-        proyectoEmpleado.nombre = "usuario2";
-        proyectoEmpleado.correo = "correo";
-        proyectoEmpleado.empresa = "empresa";
-        proyectoEmpleado.rol = "rol";
+        proyectoEmpleado.setNombre("juan osorio");
+        proyectoEmpleado.setCorreo("ejemplo@gmail.com");
+        proyectoEmpleado.setEmpresa("Empresa1");
+        proyectoEmpleado.setRol("asistente");
 
-        System.out.println("usuario2: "+ proyectoEmpleado.nombre);
-        System.out.println("correo: "+proyectoEmpleado.correo);
-        System.out.println("empresa: "+proyectoEmpleado.empresa);
-        System.out.println("rol: "+proyectoEmpleado.rol);
+        System.out.println("usuario2: "+ proyectoEmpleado.getNombre());
+        System.out.println("correo: "+proyectoEmpleado.getCorreo());
+        System.out.println("empresa: "+proyectoEmpleado.getEmpresa());
+        System.out.println("rol: "+proyectoEmpleado.getRol());
 
 
     }

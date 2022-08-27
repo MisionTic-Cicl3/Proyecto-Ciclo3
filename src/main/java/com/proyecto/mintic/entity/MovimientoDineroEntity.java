@@ -1,9 +1,24 @@
 package com.proyecto.mintic.entity;
 
 public class MovimientoDineroEntity {
-    public Integer monto;
-    public String concepto;
-    public String usuario;
+    // Atrubutos
+    private Integer monto;
+    private String concepto;
+    private String usuario;
+
+    // constructor
+
+
+    public MovimientoDineroEntity() {
+
+    }
+
+    public MovimientoDineroEntity(Integer monto, String concepto, String usuario) {
+        this.monto = monto;
+        this.concepto = concepto;
+        this.usuario = usuario;
+    }
+    // Getter y setter
 
 
     public Integer getMonto() {
