@@ -1,16 +1,16 @@
 package com.proyecto.mintic.entity;
 
-public class ProyectoEmpleado {
+public class EmpleadoEntity {
     private String nombre;
     private String correo;
     private String empresa;
     private String rol;
 
-    public ProyectoEmpleado() {
+    public EmpleadoEntity() {
 
     }
 
-    public ProyectoEmpleado(String nombre, String correo, String empresa, String rol) {
+    public EmpleadoEntity(String nombre, String correo, String empresa, String rol) {
         this.nombre = nombre;
         this.correo = correo;
         this.empresa = empresa;

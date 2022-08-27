@@ -1,7 +1,7 @@
 package com.proyecto.mintic;
 
-import com.proyecto.mintic.entity.Empresa;
-import com.proyecto.mintic.entity.ProyectoEmpleado;
+import com.proyecto.mintic.entity.EmpresaEntity;
+import com.proyecto.mintic.entity.EmpleadoEntity;
 import com.proyecto.mintic.entity.MovimientoDineroEntity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,7 +21,7 @@ public class ProyectoMinticApplication {
         System.out.println("concepto: "+ movimientoDinero.getConcepto());
         System.out.println("usuario: "+ movimientoDinero.getUsuario());
 
-        Empresa Empresa1 = new Empresa();
+        EmpresaEntity Empresa1 = new EmpresaEntity();
         Empresa1.setNombreEmpresa("Big Data Company");
         Empresa1.setDireccionEmpresa("Av 28 N 21 83");
         Empresa1.setNitEmpresa("890319193");
@@ -32,7 +32,7 @@ public class ProyectoMinticApplication {
         System.out.println("Nit empresa es: "+ Empresa1.getNitEmpresa());
         System.out.println("Telefono empresa es: "+ Empresa1.getTelefonoEmpresa());
 
-        ProyectoEmpleado proyectoEmpleado = new ProyectoEmpleado(); //instancia de empleado
+        EmpleadoEntity proyectoEmpleado = new EmpleadoEntity(); //instancia de empleado
         proyectoEmpleado.setNombre("juan osorio");
         proyectoEmpleado.setCorreo("ejemplo@gmail.com");
         proyectoEmpleado.setEmpresa("Empresa1");

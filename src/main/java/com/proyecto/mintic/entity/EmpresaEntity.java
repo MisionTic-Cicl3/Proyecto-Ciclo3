@@ -1,6 +1,6 @@
 package com.proyecto.mintic.entity;
 
-public class Empresa {
+public class EmpresaEntity {
     // Atributos
     private String nombreEmpresa;
     private String direccionEmpresa;
@@ -8,10 +8,10 @@ public class Empresa {
     private String nitEmpresa;
 
     // Constructor
-    public Empresa() {
+    public EmpresaEntity() {
     }
 
-    public Empresa(String nombreEmpresa, String direccionEmpresa, String telefonoEmpresa, String nitEmpresa) {
+    public EmpresaEntity(String nombreEmpresa, String direccionEmpresa, String telefonoEmpresa, String nitEmpresa) {
         this.nombreEmpresa = nombreEmpresa;
         this.direccionEmpresa = direccionEmpresa;
         this.telefonoEmpresa = telefonoEmpresa;
