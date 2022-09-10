@@ -11,18 +11,18 @@ import java.util.Map;
 import java.util.Optional;
 
 public class EmpresaService {
-    private EmpresaRepository repositorio;
+    /*private EmpresaRepository repositorio;
 
     public EmpresaService(EmpresaRepository repositorio){
         this.repositorio=repositorio;
     }
 
-    public Optional <EmpresaEntity> buscarempresa(String nombreEmpresa){
+    public Optional <EmpresaEntity> buscarEmpresa(String nombreEmpresa){
         return repositorio.findById(nombreEmpresa);
     }
 
     public String agregarEmpresa(EmpresaEntity empresa) {
-        if (!buscarempresa(empresa.getNombreEmpresa()).isPresent()) {
+        if (!buscarEmpresa(empresa.getNombreEmpresa()).isPresent()) {
             repositorio.save(empresa);
             return "La empresa se registró correctamente.";
         } else {
@@ -30,7 +30,12 @@ public class EmpresaService {
         }
     }
 
-
-
-
+    public String eliminarEmpresa(String nombreEmpresa){
+        if(buscarEmpresa(nombreEmpresa).isPresent()){
+            repositorio.deleteById(nombreEmpresa);
+            return "Empresa eliminada";
+        } else {
+            return "La empresa a eliminar no existe";
+        }
+    }*/
 }
