@@ -1,29 +1,30 @@
 package com.proyecto.mintic.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="Empleado")
 public class EmpleadoEntity {
 
     @Id
-    @Column(unique = true, length = 30)
-    private int Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", unique = true, length = 30)
+    private long id;
     @Column(unique = true, length = 30)
     private String email;
     @OneToOne
-    @JoinColumn(name="user")
+    @JoinColumn(name="profile_Id", nullable = false)
     private PerfilEntity profile;
-    @Column(nullable = false, length = 30)
+    @Column(name = "role", nullable = false, length = 30)
     private String role;
     @ManyToOne
     @JoinColumn(name = "enterprise")
     private EmpresaEntity enterprise;
-
-    @OneToMany
-    @JoinColumn(name="transaction")
-    private MovimientoDineroEntity transactions;
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<MovimientoDineroEntity> transactions = new ArrayList<>();
     @Column(nullable = false)
     private Date updateAt;
     @Column(nullable = false)
@@ -33,8 +34,7 @@ public class EmpleadoEntity {
     public EmpleadoEntity() {
     }
 
-    public EmpleadoEntity(int id, String email, PerfilEntity profile, String role, EmpresaEntity enterprise, MovimientoDineroEntity transactions, Date updateAt, Date createdAt) {
-        Id = id;
+    public EmpleadoEntity(String email, PerfilEntity profile, String role, EmpresaEntity enterprise, List<MovimientoDineroEntity> transactions, Date updateAt, Date createdAt) {
         this.email = email;
         this.profile = profile;
         this.role = role;
@@ -44,12 +44,13 @@ public class EmpleadoEntity {
         this.createdAt = createdAt;
     }
 
-    public int getId() {
-        return Id;
+
+    public long getId() {
+        return id;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -84,11 +85,11 @@ public class EmpleadoEntity {
         this.enterprise = enterprise;
     }
 
-    public MovimientoDineroEntity getTransactions() {
+    public List<MovimientoDineroEntity> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(MovimientoDineroEntity transactions) {
+    public void setTransactions(List<MovimientoDineroEntity> transactions) {
         this.transactions = transactions;
     }
 
@@ -111,7 +112,7 @@ public class EmpleadoEntity {
     @Override
     public String toString() {
         return "EmpleadoEntity{" +
-                "Id=" + Id +
+                "Id=" + id +
                 ", email='" + email + '\'' +
                 ", profile='" + profile + '\'' +
                 ", role='" + role + '\'' +

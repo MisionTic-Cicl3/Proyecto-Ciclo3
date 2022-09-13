@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmpresaRepository extends JpaRepository<EmpresaEntity, String> {
 
-    public ArrayList<EmpresaEntity> buscarAutor(String Autor);
+    //public ArrayList<EmpresaEntity> buscarAutor(String Autor);
 
 }

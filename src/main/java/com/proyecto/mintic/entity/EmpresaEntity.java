@@ -1,16 +1,17 @@
 package com.proyecto.mintic.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Empresa")
 public class EmpresaEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true, length = 30)
     private int Id;
     @Column(unique = true, length = 30)
@@ -21,28 +22,44 @@ public class EmpresaEntity {
     private String phone;
     @Column(nullable = false, length = 30)
     private String address;
-    @Column(nullable = false, length = 100)
-    private String users;
-    @Column(nullable = false, length = 100)
-    private String transactions;
+    @OneToMany(mappedBy = "enterprise", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<EmpleadoEntity> empleado = new ArrayList<>();
+    @OneToMany(mappedBy = "empresad", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<MovimientoDineroEntity> transactions = new ArrayList<>();
     @Column(nullable = false)
-    private Date createdAt;
+    private Calendar createdAt;
     @Column(nullable = false)
-    private Date updateAt;
+    private Calendar updateAt;
 
     public EmpresaEntity() {
     }
 
-    public EmpresaEntity(int id, String name, String document, String phone, String address, String users, String transactions, Date createdAt, Date updateAt) {
-        Id = id;
+
+    public EmpresaEntity(String name, String document, String phone, String address, List<EmpleadoEntity> empleado, List<MovimientoDineroEntity> transactions, Calendar createdAt, Calendar updateAt) {
         this.name = name;
         this.document = document;
         this.phone = phone;
         this.address = address;
-        this.users = users;
+        this.empleado = empleado;
         this.transactions = transactions;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
+    }
+
+    public List<MovimientoDineroEntity> getTransactions() {
+        return transactions;
+    }
+
+    public List<EmpleadoEntity> getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(List<EmpleadoEntity> empleado) {
+        this.empleado = empleado;
+    }
+
+    public void setTransactions(List<MovimientoDineroEntity> transactions) {
+        this.transactions = transactions;
     }
 
     public int getId() {
@@ -85,35 +102,19 @@ public class EmpresaEntity {
         this.address = address;
     }
 
-    public String getUsers() {
-        return users;
-    }
-
-    public void setUsers(String users) {
-        this.users = users;
-    }
-
-    public String getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(String transactions) {
-        this.transactions = transactions;
-    }
-
-    public Date getCreatedAt() {
+    public Calendar getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Calendar createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdateAt() {
+    public Calendar getUpdateAt() {
         return updateAt;
     }
 
-    public void setUpdateAt(Date updateAt) {
+    public void setUpdateAt(Calendar updateAt) {
         this.updateAt = updateAt;
     }
 
@@ -125,8 +126,8 @@ public class EmpresaEntity {
                 ", document='" + document + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
-                ", users='" + users + '\'' +
-                ", transactions='" + transactions + '\'' +
+                ", empleado=" + empleado +
+                ", transactions=" + transactions +
                 ", createdAt=" + createdAt +
                 ", updateAt=" + updateAt +
                 '}';

@@ -5,22 +5,22 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-@Table(name = "Movimiento")
+@Table(name = "MovimientoDinero")
 public class MovimientoDineroEntity {
     @Id
     @Column(unique = true, length = 30)
     @GeneratedValue (strategy = GenerationType.AUTO)
-    private int Id;
+    private long Id;
     @Column(nullable = false, length = 50)
     private String concept;
     @Column(nullable = false, length = 50)
     private String amount;
     @ManyToOne
-    @JoinColumn(name = "Usuario")
-    private EmpleadoEntity user;
+    @JoinColumn(name = "empleadoId")
+    private EmpleadoEntity empleado;
     @ManyToOne
-    @JoinColumn(name = "Empresas")
-    private EmpresaEntity enterprise;
+    @JoinColumn(name = "empresad")
+    private EmpresaEntity empresad;
     @Column(nullable = false)
     private Calendar createdAt;
     @Column(nullable = false)
@@ -30,21 +30,20 @@ public class MovimientoDineroEntity {
     public MovimientoDineroEntity() {
     }
 
-    public MovimientoDineroEntity(int id, String concept, String amount, EmpleadoEntity user, EmpresaEntity enterprise, Calendar createdAt, Calendar updateAt) {
-        Id = id;
+    public MovimientoDineroEntity(String concept, String amount, EmpleadoEntity empleado, EmpresaEntity empresad, Calendar createdAt, Calendar updateAt) {
         this.concept = concept;
         this.amount = amount;
-        this.user = user;
-        this.enterprise = enterprise;
+        this.empleado = empleado;
+        this.empresad = empresad;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
 
-    public int getId() {
+    public long getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         Id = id;
     }
 
@@ -64,20 +63,20 @@ public class MovimientoDineroEntity {
         this.amount = amount;
     }
 
-    public EmpleadoEntity getUser() {
-        return user;
+    public EmpleadoEntity getEmpleado() {
+        return empleado;
     }
 
-    public void setUser(EmpleadoEntity user) {
-        this.user = user;
+    public void setEmpleado(EmpleadoEntity empleado) {
+        this.empleado = empleado;
     }
 
-    public EmpresaEntity getEnterprise() {
-        return enterprise;
+    public EmpresaEntity getEmpresad() {
+        return empresad;
     }
 
-    public void setEnterprise(EmpresaEntity enterprise) {
-        this.enterprise = enterprise;
+    public void setEmpresad(EmpresaEntity empresad) {
+        this.empresad = empresad;
     }
 
     public Calendar getCreatedAt() {
@@ -102,8 +101,8 @@ public class MovimientoDineroEntity {
                 "Id=" + Id +
                 ", concept='" + concept + '\'' +
                 ", amount='" + amount + '\'' +
-                ", user=" + user +
-                ", enterprise=" + enterprise +
+                ", user=" + empleado +
+                ", enterprise=" + empresad +
                 ", createdAt=" + createdAt +
                 ", updateAt=" + updateAt +
                 '}';
