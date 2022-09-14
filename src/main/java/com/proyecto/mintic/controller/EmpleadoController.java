@@ -2,9 +2,7 @@ package com.proyecto.mintic.controller;
 
 import com.proyecto.mintic.entity.EmpleadoEntity;
 import com.proyecto.mintic.service.EmpleadoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -26,6 +24,19 @@ public class EmpleadoController {
     @GetMapping("/user/{id}")
     public Optional<EmpleadoEntity> buscarEmpleado(@PathVariable("id") long id) {
         return service.buscarEmpleado(id);
+    }
+
+    @PostMapping("/AgregarEmpleado")
+        public String agregarEmpleado(@RequestBody EmpleadoEntity Empleado){
+        return service.agregarempleado(Empleado);
+    }
+    @PutMapping("/ActualizarEmpleado")
+        public String actualizarEmpleado(@RequestBody EmpleadoEntity Empleado){
+        return service.actualizarEmpleado(Empleado);
+    }
+
+    @DeleteMapping("/EliminarEmpleado")
+    public String eliminarEmpleado(@PathVariable("id")long id) {return service.eliminarEmpleado(id);}
     }
 }
 
