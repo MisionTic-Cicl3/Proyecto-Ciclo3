@@ -28,7 +28,7 @@ public class EmpleadoController {
 
     @PostMapping("/AgregarEmpleado")
         public String agregarEmpleado(@RequestBody EmpleadoEntity Empleado){
-        return service.agregarempleado(Empleado);
+        return service.agregarEmpleado(Empleado);
     }
     @PutMapping("/ActualizarEmpleado")
         public String actualizarEmpleado(@RequestBody EmpleadoEntity Empleado){
@@ -37,6 +37,5 @@ public class EmpleadoController {
 
     @DeleteMapping("/EliminarEmpleado")
     public String eliminarEmpleado(@PathVariable("id")long id) {return service.eliminarEmpleado(id);}
-    }
-}
 
+}

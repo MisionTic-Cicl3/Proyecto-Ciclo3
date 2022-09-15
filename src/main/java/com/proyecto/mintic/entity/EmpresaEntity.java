@@ -13,7 +13,7 @@ public class EmpresaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true, length = 30)
-    private int Id;
+    private long Id;
     @Column(unique = true, length = 30)
     private String name;
     @Column(unique = true, length = 30)
@@ -62,11 +62,11 @@ public class EmpresaEntity {
         this.transactions = transactions;
     }
 
-    public int getId() {
+    public long getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         Id = id;
     }
 
