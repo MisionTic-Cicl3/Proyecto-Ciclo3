@@ -23,16 +23,28 @@ public class EmpresaService {
        return repository.findById(id);
     }
 
+    public EmpresaEntity buscarEmpresa1(Long id){return repository.findById(id).get();
+    }
+
     public ArrayList<EmpresaEntity> buscarDocument(String document){
        return repository.findByDocument(document);
     }
 
-    public String agregarEmpresa(EmpresaEntity empresa) {
+    public boolean agregarEmpresa(EmpresaEntity empresa) {
         if (!buscarEmpresa(empresa.getId()).isPresent()) {
             repository.save(empresa);
-            return "La empresa se registró correctamente.";
+            return true;
         } else {
-            return "La empresa ya existe. ";
+            return false;
+        }
+    }
+
+    public String actualizarEmpresa(EmpresaEntity empresa){
+        if(buscarEmpresa(empresa.getId()).isPresent()){
+            repository.save(empresa);
+            return "Libro actualizado exitosamente";
+        }else {
+            return "El libro a modificar no existe.";
         }
     }
     public String eliminarEmpresa(Long id){

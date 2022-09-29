@@ -35,7 +35,7 @@ public class EmpresaController {
 
     @PostMapping("/AgregarEmpresa")
     public String agregarEmpresa(@RequestBody EmpresaEntity empresa){
-        return service.agregarEmpresa(empresa);
+        return String.valueOf(service.agregarEmpresa(empresa));
     }
 
     @DeleteMapping("/EliminarEmpresa/{id}")
